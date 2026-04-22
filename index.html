@@ -292,11 +292,6 @@
         }, 500);
     });
     
-    // ฟังก์ชันกันบัค ป้องกัน Error หากไม่มีฟังก์ชันเปลี่ยนพื้นหลังอยู่ใน js
-    function syncNormalBackground() {
-        // ว่างไว้เพื่อกันบัค
-    }
-
     const themeToggleBtn = document.getElementById('themeToggleBtn');
     const themeIcon = document.getElementById('themeIcon');
     const themeText = document.getElementById('themeText');
@@ -338,6 +333,7 @@
         if(document.getElementById('receiveraccount')) document.getElementById('receiveraccount').value = 'XXXXXX1426';
         if(document.getElementById('amount11')) document.getElementById('amount11').value = '3,300.00';
         
+        // เซ็ตกลับเป็น "รหัส e-Wallet" (LINE BK)
         if(document.getElementById('bank')) document.getElementById('bank').value = 'รหัส e-Wallet';
         if(document.getElementById('imageSelect')) document.getElementById('imageSelect').selectedIndex = 0;
         
@@ -384,18 +380,18 @@
             }
             if(favData.noteText !== undefined && document.getElementById('AideMemoire')) document.getElementById('AideMemoire').value = favData.noteText;
             
-            if(favData.sName && document.getElementById('sendername')) document.getElementById('sendername').value = favData.sName;
-            if(favData.sAccount && document.getElementById('senderaccount')) document.getElementById('senderaccount').value = favData.sAccount;
-            if(favData.rName && document.getElementById('receivername')) document.getElementById('receivername').value = favData.rName;
-            if(favData.rAccount && document.getElementById('receiveraccount')) document.getElementById('receiveraccount').value = favData.rAccount;
+            if(favData.sName !== undefined && document.getElementById('sendername')) document.getElementById('sendername').value = favData.sName;
+            if(favData.sAccount !== undefined && document.getElementById('senderaccount')) document.getElementById('senderaccount').value = favData.sAccount;
+            if(favData.rName !== undefined && document.getElementById('receivername')) document.getElementById('receivername').value = favData.rName;
+            if(favData.rAccount !== undefined && document.getElementById('receiveraccount')) document.getElementById('receiveraccount').value = favData.rAccount;
             
-            if(favData.bank && document.getElementById('bank')) document.getElementById('bank').value = favData.bank;
-            if(favData.amount && document.getElementById('amount11')) document.getElementById('amount11').value = favData.amount;
-            if(favData.sticker && document.getElementById('imageSelect')) document.getElementById('imageSelect').value = favData.sticker;
+            if(favData.bank !== undefined && document.getElementById('bank')) document.getElementById('bank').value = favData.bank;
+            if(favData.amount !== undefined && document.getElementById('amount11')) document.getElementById('amount11').value = favData.amount;
+            if(favData.sticker !== undefined && document.getElementById('imageSelect')) document.getElementById('imageSelect').value = favData.sticker;
             
             if(window.updateDisplay) window.updateDisplay();
         } else {
-            alert('⚠️ คุณยังไม่ได้บันทึกรายการโปรด);
+            alert('⚠️ คุณยังไม่ได้บันทึกรายการโปรด');
         }
     };
 </script>
